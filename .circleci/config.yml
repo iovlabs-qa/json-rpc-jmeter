@@ -8,6 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: docker:stable-git
+      - image: circleci/openjdk:8-jdk
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -48,3 +49,18 @@ jobs:
 
       - store_artifacts:
           path: target/jmeter/reports
+
+workflows:
+    commit:
+        jobs:
+            - build
+    nightly:
+        triggers:
+            - schedule:
+                cron: "00 00 * * *"
+                filters:
+                    branches:
+                        only:
+                            - master
+        jobs:
+            - build
