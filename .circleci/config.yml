@@ -45,6 +45,7 @@ jobs:
       # run tests!
       - run: 
           - docker run -d --name rskj -e "miner.client.autoMine=true" rsksmart/rskj --regtest
+      - run: 
           - mvn verify
 
       - store_artifacts:
