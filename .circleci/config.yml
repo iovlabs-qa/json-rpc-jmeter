@@ -43,10 +43,12 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: 
-          - docker run -d --name rskj -e "miner.client.autoMine=true" rsksmart/rskj --regtest
-      - run: 
-          - mvn verify
+        - run:
+          name: Start RSKj
+          command: docker run -d --name rskj -e "miner.client.autoMine=true" rsksmart/rskj --regtest
+      - run:
+          name: Run JMeter
+          command:  mvn verify
 
       - store_artifacts:
           path: target/jmeter/reports
