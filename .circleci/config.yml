@@ -34,7 +34,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      #- run: mvn dependency:go-offline
+      - run: mvn dependency:go-offline
 
       - save_cache:
           paths:
@@ -51,4 +51,7 @@ jobs:
 
       - store_artifacts:
           path: target/jmeter/logs
+          path: target/jmeter/reports
+
+          
 
