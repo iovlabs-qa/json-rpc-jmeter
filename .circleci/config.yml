@@ -43,11 +43,10 @@ jobs:
 
       # run tests!
       - run:
-          name: Start RSKj
-          command: docker run -d --name rskj -e "miner.client.autoMine=true" rsksmart/rskj --regtest
-      - run:
-          name: Run JMeter
-          command:  mvn verify
+          name: Start RSKj & Run JMeter
+          command: |
+                    docker run -d --name rskj -e "miner.client.autoMine=true" rsksmart/rskj --regtest
+                    mvn verify
 
       - store_artifacts:
           path: target/jmeter/reports
