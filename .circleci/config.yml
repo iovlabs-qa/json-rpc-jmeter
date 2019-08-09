@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: ~/tmp
 
     environment:
       # Customize the JVM maximum heap limit
@@ -25,7 +25,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build RSKj
-          command: docker build -t rsksmart/rskj https://github.com/rsksmart/rskj.git -f - < docker/Dockerfile-rskj
+          command: docker build -t https://github.com/rsksmart/rskj.git -f - < docker/Dockerfile-rskj
       
       # Download and cache dependencies
       - restore_cache:
