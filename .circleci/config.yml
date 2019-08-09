@@ -43,7 +43,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-        - run:
+      - run:
           name: Start RSKj
           command: docker run -d --name rskj -e "miner.client.autoMine=true" rsksmart/rskj --regtest
       - run:
