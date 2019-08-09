@@ -25,7 +25,8 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build RSKj
-          command: docker build -t https://github.com/rsksmart/rskj.git -f - < docker/Dockerfile-rskj
+          command: docker build -t rsksmart/rskj https://github.com/rsksmart/rskj.git 
+          #-f - < docker/Dockerfile-rskj
       
       # Download and cache dependencies
       - restore_cache:
