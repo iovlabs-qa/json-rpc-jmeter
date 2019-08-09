@@ -50,7 +50,6 @@ jobs:
           command:  mvn verify
 
       - store_artifacts:
-          path: target/jmeter/logs
           path: target/jmeter/reports
 
           
