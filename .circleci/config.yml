@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Start RSKj & Run JMeter
           command: |
-                    docker run -d --name rskj -e "miner.client.autoMine=true" -e "rpc.providers.web.http.bind_address=0.0.0.0" -e "rpc.providers.web.http.hosts.0=127.0.0.1" rsksmart/rskj --regtest -p 127.0.0.1:4444:4444 
+                    docker run -d --name rskj -e "miner.client.autoMine=true" -e "rpc.providers.web.http.bind_address=0.0.0.0" -e "rpc.providers.web.http.hosts.0=127.0.0.1" rsksmart/rskj --regtest -p 127.0.0.1:4444:4444 --publish-all=true
                     until nc -z 127.0.0.1 4444
                       do
                         echo "Waiting for RskJ..."
