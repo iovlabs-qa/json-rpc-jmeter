@@ -25,7 +25,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build RSKj
-          command: docker build -t rsksmart/rskj https://github.com/rsksmart/rskj.git -f - < docker/Dockerfile-rskj
+          command: docker build -t rsksmart/rskj -p 192.168.1.100:4444:4444 https://github.com/rsksmart/rskj.git -f - < docker/Dockerfile-rskj
       
       # Download and cache dependencies
       - restore_cache:
@@ -46,7 +46,6 @@ jobs:
           name: Start RSKj & Run JMeter
           command: |
                     docker run -d --name rskj -e "miner.client.autoMine=true" rsksmart/rskj --regtest
-                    curl http://127.0.0.1:4444
                     mvn verify -e
 
       - store_artifacts:
