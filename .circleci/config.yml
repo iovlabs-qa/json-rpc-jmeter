@@ -50,6 +50,3 @@ jobs:
 
       - store_artifacts:
           path: target/jmeter/reports
-      
-      - store_artifacts:
-          path: target/jmeter/logs
