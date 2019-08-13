@@ -56,7 +56,7 @@ jobs:
                         echo "Waiting for RskJ..."
                         sleep 1
                       done
-                    mvn verify
+                      mvn verify
 
       - store_artifacts:
           path: target/jmeter/reports
