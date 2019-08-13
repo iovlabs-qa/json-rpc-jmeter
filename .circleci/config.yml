@@ -59,9 +59,8 @@ jobs:
 
       - store_artifacts:
           path: target/jmeter/reports
-          
-          
- workflows:
+
+workflows:
     commit:
         jobs:
             - build
