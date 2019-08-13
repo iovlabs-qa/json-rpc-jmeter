@@ -24,8 +24,13 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Build RSKj
-          command: docker build -t rsksmart/rskj https://github.com/rsksmart/rskj.git -f - < docker/Dockerfile-rskj
+          name: Clone and Build RSKj
+          command: |
+                    GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_fingerprint'
+                    git clone git@github.com:rsksmart/rskj.git -f - < docker/Dockerfile-rskj ~/rsksmart/rskj
+                    cd ~/rsksmart/rskj/
+                    ./configure.sh
+                    gradlew clean build -x test
       
       # Download and cache dependencies
       - restore_cache:
@@ -45,8 +50,8 @@ jobs:
       - run:
           name: Start RSKj & Run JMeter
           command: |
-                    docker run -d --name rskj -e "miner.client.autoMine=true" -e "rpc.providers.web.http.bind_address=0.0.0.0" -e "rpc.providers.web.http.hosts.0=127.0.0.1" rsksmart/rskj --regtest -p 127.0.0.1:4444:4444 --publish-all=true
-                    until nc -z 127.0.0.1 4444
+                      java -cp ~/rsksmart/rskj/rskj-core/build/libs/rskj-core-1.1.0-SNAPSHOT-all.jar co.rsk.Start --regtest nohup                
+                      until nc -z 127.0.0.1 4444
                       do
                         echo "Waiting for RskJ..."
                         sleep 1
