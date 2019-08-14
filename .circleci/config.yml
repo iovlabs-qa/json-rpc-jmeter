@@ -59,6 +59,9 @@ jobs:
 
       - store_artifacts:
           path: target/jmeter/reports
+          
+      - store_artifacts:
+          path: target/jmeter/results/
 
 workflows:
     commit:
@@ -67,7 +70,7 @@ workflows:
     daily:
         triggers:
             - schedule:
-                cron: "30 22 * * *"
+                cron: "30 00 * * *"
                 filters:
                     branches:
                         only:
