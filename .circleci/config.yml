@@ -55,15 +55,15 @@ jobs:
                         echo "Waiting for RskJ..."
                         sleep 1
                       done
-                      mvn verify
+                      mvn verify -e
 
       - store_artifacts:
           path: target/jmeter/reports
-          destination: ~/tmp
+          destination: ~/tmp/Results
           
       - store_artifacts:
           path: target/jmeter/results
-          destination: ~/tmp
+          destination: ~/tmp/Results
           
 
 workflows:
