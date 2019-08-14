@@ -58,7 +58,7 @@ jobs:
                       mvn verify
 
       - store_artifacts:
-          path: target/jmeter/reports
+          path: target/jmeter/reports/
           
       - store_artifacts:
           path: target/jmeter/results/
