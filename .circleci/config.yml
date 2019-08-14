@@ -58,10 +58,13 @@ jobs:
                       mvn verify
 
       - store_artifacts:
-          path: target/jmeter/reports/
+          path: target/jmeter/reports
+          destination: ~/tmp
           
       - store_artifacts:
-          path: target/jmeter/results/
+          path: target/jmeter/results
+          destination: ~/tmp
+          
 
 workflows:
     commit:
