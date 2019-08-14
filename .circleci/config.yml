@@ -56,6 +56,9 @@ jobs:
                         sleep 1
                       done
                       mvn verify -e
+                      cd /home/circleci/tmp/target/jmeter/
+                      ls
+                      tree /home/circleci/tmp/target/jmeter/
 
       - store_artifacts:
           path: /home/circleci/tmp/target/jmeter/reports
