@@ -67,7 +67,7 @@ jobs:
           destination: ~/tmp/Results
           
       - store_test_results:
-          path: target/jmeter/results
+          path: ~/tmp/Results
 
           
 
