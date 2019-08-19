@@ -66,6 +66,10 @@ jobs:
           path: target/jmeter/results
           destination: ~/tmp/Results
           
+       - store_test_results:
+          path: target/jmeter/results
+
+          
 
 workflows:
     commit:
