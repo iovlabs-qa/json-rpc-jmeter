@@ -71,17 +71,4 @@ jobs:
 
           
 
-workflows:
-    commit:
-        jobs:
-            - build
-    daily:
-        triggers:
-            - schedule:
-                cron: "22 01 * * *"
-                filters:
-                    branches:
-                        only:
-                            - master
-        jobs:
-            - build
+
